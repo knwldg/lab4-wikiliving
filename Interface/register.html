@@ -15,7 +15,7 @@
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="register.css" rel="stylesheet">
+    <link href="signin.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,25 +28,25 @@
 
     <div class="container">
 
-      <form class="form-signin" id="loginForm" action="components/login_control.php" method="post" role="form">
+      <form class="form-register" id="registerForm" action="components/register_control.php" method="post" role="form">
 
-          <h2 class="form-signin-heading">WikiLiving Login</h2>
+          <h2 class="form-signin-heading">WikiLiving Register</h2>
 
           <label for="inputUsername" class="sr-only">Username</label>
 
-          <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="username"  required autofocus>
+          <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="username" required autofocus>
 
           <label for="inputPassword" class="sr-only">Password</label>
 
           <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="inputPassword" required>
 
-          <div class="checkbox">
-          <!-- Talvez adicionar no futuro?
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-          -->
-        </div>
+          <label for="confirmPassword" class="sr-only">Confirm Password</label>
+
+          <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" name="confirmPassword" required>
+
+          <label for="email" class="sr-only">Email</label>
+
+          <input type="email" id="email" class="form-control" placeholder="Your email here" name="email" required>
 
           <input type="submit" tabindex="4" class="form-control btn btn-lg btn-primary btn-block" value="Log In Now">
 
