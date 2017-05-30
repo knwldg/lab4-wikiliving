@@ -6,33 +6,37 @@ function registerUser($inputUser, $inputPass, $inputEmail) {
 
 	global $sql_connection;
 
-	if (!isset ($sql_connection)){
+	if (!isset ($sql_connection)) {
 
-		return false;
+		throw new Exception("SQL Connection failure");
 
 	}
 
 	if (!isset($_POST["inputUsername"]) || !isset($_POST["email"]) || !isset($_POST["inputPassword"]) || !isset($_POST["confirmPassword"]) || $_POST["inputPassword"] != $_POST["confirmPassword"]) {
 
-		return false;
+		throw new Exception("One or more fields were incorrectly filled");
 
 	}
 
-	$hash = password_hash($inputPass, PASSWORD_DEFAULT);
+	try {
 
-	$sql_op = $sql_connection->prepare("INSERT INTO users (email, username, password, roles_id_roles) VALUES (?,?,?,1)");
+		$hash = password_hash($inputPass, PASSWORD_DEFAULT);
 
-	$sql_op->bind_param("sss", $inputEmail, $inputUser, $hash);
+		$sql_op = $sql_connection->prepare("INSERT INTO users (email, username, password, roles_id_roles) VALUES (?,?,?,1)");
 
-	if ($sql_op->execute()) {
+		$sql_op->bind_param("sss", $inputEmail, $inputUser, $hash);
 
-		return true;
+		if (!$sql_op->execute()) {
+
+			throw new Exception("Cannot register user in database");
+
+		}
 
 	}
 
-	else {
+	catch(Exception $exception) {
 
-		return false;
+			echo "Error: " . $exception;
 
 	}
 
@@ -42,10 +46,12 @@ function loginUser($inputUser, $inputPass) {
 
 	global $sql_connection;
 
-	$role = "";
-	$db_hash = "";
+	try {
 
-	if ($sql_op = $sql_connection->prepare("SELECT password, roles_id_roles FROM users WHERE username = ? LIMIT 1")) {
+		$role = "";
+		$db_hash = "";
+
+		$sql_op = $sql_connection->prepare("SELECT password, roles_id_roles FROM users WHERE username = ? LIMIT 1");
 
 		$sql_op->bind_param("s", $inputUser);
 
@@ -69,8 +75,21 @@ function loginUser($inputUser, $inputPass) {
 
 		}
 
-		else return false;
+		else {
+
+			throw new Exception("No user found or password incorrect");
+
+		}
+
+	}
+
+	catch(Exception $exception) {
+
+		echo "Error: " . $exception;
 
 	}
 
 }
+
+
+
