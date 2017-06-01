@@ -1,4 +1,23 @@
 <!DOCTYPE html>
+
+<?php
+
+require_once "../../components/generalControl.php";
+
+if (!isset($_SESSION["role"])) {
+
+	die("User is not logged in");
+
+}
+
+if (!privilegeChecker(3, $_SESSION["username"])) {
+
+	die ("You do not have the necessary permissions to view this page");
+
+}
+
+?>
+
 <html lang="en">
 
 <head>
@@ -28,10 +47,6 @@
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -48,7 +63,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.php">SB Admin v2.0</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -277,7 +292,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

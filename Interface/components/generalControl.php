@@ -147,9 +147,6 @@ function loginUser($inputUser, $inputPass) {
 
 		*/
 
-		$role = "";
-		$db_hash = "";
-
 		$sql_op = $sql_connection->prepare("SELECT password, roles_id_roles FROM users WHERE username = ? LIMIT 1");
 
 		$sql_op->bind_param("s", $inputUser);
@@ -248,7 +245,7 @@ function contentFetcher($pageId) {
 
 		echo ("$pageId, $nome_planta, $tipo_planta, $instr_planta, $usos_planta");
 
-		$plantData = array($pageId, $nome_planta, $tipo_planta, $instr_planta, $usos_planta);
+		$plantData = array("pageId"=>$pageId, "nomePlanta"=>$nome_planta, "tipoPlanta"=>$tipo_planta, "instrucoesPlanta"=>$instr_planta, "usosPlanta"=>$usos_planta);
 
 		return true;
 
@@ -257,6 +254,54 @@ function contentFetcher($pageId) {
 	catch (Exception $exception) {
 
 		echo "Error: $exception";
+
+		return false;
+
+	}
+
+}
+
+function privilegeChecker($level, $user) {
+
+	// 1 = user, 2 = editor, 3 = admin
+
+	global $sql_connection;
+
+	try {
+
+		$sql_op = $sql_connection->prepare("SELECT roles_id_roles FROM users WHERE username = ?");
+
+		$sql_op->bind_param("s", $user);
+
+		if (!$sql_op->execute())  {
+
+			throw new Exception("SQL query error");
+
+		}
+
+		$sql_op->store_result();
+
+		$sql_op->bind_result($role);
+
+		$sql_op->fetch();
+
+		if ($level === $role) {
+
+			return true;
+
+		}
+
+		else {
+
+			throw new Exception("User is not authorized to view this page");
+
+		}
+
+	}
+
+	catch (Exception $exception) {
+
+		echo("Error : $exception");
 
 		return false;
 

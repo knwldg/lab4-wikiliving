@@ -88,7 +88,7 @@ contentFetcher($_GET["id"]);
                 <!-- Informações base do fruto -->
                 
                 <div class="well">
-                    <h3 class="h3 text-center"><?php echo($article_sidebar_title)?>></h3>
+                    <h3 class="h3 text-center"><?php echo($plantData["nomePlanta"])?>></h3>
                     <img class="col-centered img-responsive" src="<?php echo("img/$article_image.jpg");?>" alt="">
                 </div>
                 
