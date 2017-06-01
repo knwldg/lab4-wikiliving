@@ -121,9 +121,9 @@ function registerUser($inputUser, $inputPass, $inputEmail) {
 
 	}
 
-	catch(Exception $exception) {
+	catch (Exception $exception) {
 
-			echo "Error: " . $exception;
+			echo "Error: $exception";
 
 			return false;
 
@@ -154,7 +154,7 @@ function loginUser($inputUser, $inputPass) {
 
 		$sql_op->bind_param("s", $inputUser);
 
-		if ($sql_op->execute()) {
+		if (!$sql_op->execute()) {
 
 			throw new Exception("SQL query error");
 
@@ -174,13 +174,13 @@ function loginUser($inputUser, $inputPass) {
 
 				$_SESSION['role'] = $role;
 
-				// echo("Login success with credentials ") . $_SESSION['username']  . " and role " . $_SESSION['role'];
+				echo($_SESSION['username'] . $_SESSION['role']);
 
 				return true;
 
 			}
 
-			else throw new Exception("Passwords did not match");
+			else throw new Exception("No user found or password incorrect");
 
 		}
 
@@ -194,7 +194,7 @@ function loginUser($inputUser, $inputPass) {
 
 	catch(Exception $exception) {
 
-		echo "Error: " . $exception;
+		echo "Error: $exception";
 
 		return false;
 
@@ -202,8 +202,64 @@ function loginUser($inputUser, $inputPass) {
 
 }
 
-function fetchPageData($pageId, $userRole) {
+/*
+
+function resetPassword($type, $value) {
+
+	// $type representa o tipo de autenticação que o user sabe
+	// 1 para email (e enviar um email ao user com hash random)
+	// 2 para username (e depois de confirmação de email enviar email ao user)
+
+	switch($type) {
+
+		case 1:
 
 
+
+	}
+
+}
+
+*/
+
+function contentFetcher($pageId) {
+
+	global $plantData;
+
+	global $sql_connection;
+
+	try {
+
+		$sql_op = $sql_connection->prepare("SELECT nome_planta, tipo_planta, instr_planta, usos_planta FROM plantas WHERE idplantas = ?");
+
+		$sql_op->bind_param("i", $pageId);
+
+		if (!$sql_op ->execute()) {
+
+			throw new Exception("SQL query error");
+
+		}
+
+		$sql_op->store_result();
+
+		$sql_op->bind_result($nome_planta, $tipo_planta, $instr_planta, $usos_planta);
+
+		$sql_op->fetch();
+
+		echo ("$pageId, $nome_planta, $tipo_planta, $instr_planta, $usos_planta");
+
+		$plantData = array($pageId, $nome_planta, $tipo_planta, $instr_planta, $usos_planta);
+
+		return true;
+
+	}
+
+	catch (Exception $exception) {
+
+		echo "Error: $exception";
+
+		return false;
+
+	}
 
 }

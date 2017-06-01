@@ -24,17 +24,18 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body style="background-image: url('img/panda.jpg')">
 
     <div class="container">
-
+    <div class="col-md-4 col-lg-4 col-sm-4 invisible "> olá</div>
+    <div class="col-md-4 col-lg-4 col-sm-4">
       <form class="form-signin" id="loginForm" action="components/login_control.php" method="post" role="form">
 
-          <h2 class="form-signin-heading">WikiLiving Login</h2>
+          <br><br><br><br><h2 class="form-signin-heading text-center">WikiLiving Login</h2> <br>
 
           <label for="inputUsername" class="sr-only">Username</label>
 
-          <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="username"  required autofocus>
+          <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username"  required autofocus><p></p>
 
           <label for="inputPassword" class="sr-only">Password</label>
 
@@ -51,6 +52,7 @@
           <input type="submit" tabindex="4" class="form-control btn btn-lg btn-primary btn-block" value="Log In Now">
 
       </form>
+    </div>
 
     </div> <!-- /container -->
 
