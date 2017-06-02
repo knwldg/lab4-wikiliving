@@ -1,2 +1,2 @@
 <?php
-$sql_connection = new mysqli("localhost", "root", "", "deca_16l4_69");
+$sql_connection = new mysqli("localhost", "root", "", "wikiliving_db");

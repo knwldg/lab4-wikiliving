@@ -19,7 +19,7 @@ function checkIfExists($type, $value) {
 
 		case 2:
 
-			$sql_op = $sql_connection->prepare("SELECT username FROM users WHERE username = ?");
+			$sql_op = $sql_connection->prepare("SELECT nome_user FROM users WHERE nome_user = ?");
 
 			break;
 
@@ -28,11 +28,13 @@ function checkIfExists($type, $value) {
 
 			$sql_op = $sql_connection->prepare("SELECT nome_planta FROM plantas WHERE nome_planta = ?");
 
+			break;
+
 	}
 
 	try {
 
-		if (isset ($type)) {
+		if (isset ($type) && isset($sql_op)) {
 
 			$sql_op->bind_param("s", $value);
 
@@ -85,7 +87,6 @@ function registerUser($inputUser, $inputPass, $inputEmail) {
 
 	try {
 
-
 		if (!isset ($sql_connection)) {
 
 			throw new Exception("SQL Connection failure");
@@ -112,7 +113,7 @@ function registerUser($inputUser, $inputPass, $inputEmail) {
 
 		$hash = password_hash($inputPass, PASSWORD_DEFAULT);
 
-		$sql_op = $sql_connection->prepare("INSERT INTO users (email, username, password, roles_id_roles) VALUES (?,?,?,1)");
+		$sql_op = $sql_connection->prepare("INSERT INTO users (email, nome_user, password_hash, roles_id_roles) VALUES (?,?,?,1)");
 
 		$sql_op->bind_param("sss", $inputEmail, $inputUser, $hash);
 
@@ -152,7 +153,7 @@ function loginUser($inputUser, $inputPass) {
 
 		*/
 
-		$sql_op = $sql_connection->prepare("SELECT password, roles_id_roles FROM users WHERE username = ? LIMIT 1");
+		$sql_op = $sql_connection->prepare("SELECT password_hash, roles_id_roles FROM users WHERE nome_user = ? LIMIT 1");
 
 		$sql_op->bind_param("s", $inputUser);
 
@@ -207,7 +208,7 @@ function contentFetcher($pageId) {
 
 	try {
 
-		$sql_op = $sql_connection->prepare("SELECT nome_planta, tipo_planta, instr_planta, usos_planta FROM plantas WHERE idplantas = ?");
+		$sql_op = $sql_connection->prepare("SELECT nome_planta, texto_planta FROM plantas WHERE id_plantas = ?");
 
 		$sql_op->bind_param("i", $pageId);
 
@@ -249,7 +250,7 @@ function privilegeChecker($level, $user) {
 
 	try {
 
-		$sql_op = $sql_connection->prepare("SELECT roles_id_roles FROM users WHERE username = ?");
+		$sql_op = $sql_connection->prepare("SELECT roles_id_roles FROM users WHERE nome_user = ?");
 
 		$sql_op->bind_param("s", $user);
 
@@ -295,14 +296,14 @@ function listArticles() {
 
 	global $sql_connection;
 
-	$sql_op = $sql_connection->query("SELECT nome_planta, idplantas FROM plantas ORDER BY nome_planta ASC");
+	$sql_op = $sql_connection->query("SELECT nome_planta, id_plantas FROM plantas ORDER BY nome_planta ASC");
 
 	for ($articleList = array (); $row = $sql_op->fetch_assoc(); $articleList[] = $row);
 
 
 }
 
-function addArticle($plantName, $text) {
+function addArticle($plantName, $plantText, $plantType) {
 
 	global $sql_connection;
 
@@ -320,9 +321,9 @@ function addArticle($plantName, $text) {
 
 		}
 
-		$sql_op = $sql_connection->prepare("INSERT INTO plantas (nome_planta, instr_planta) VALUES (?,?)");
+		$sql_op = $sql_connection->prepare("INSERT INTO plantas (nome_planta, texto_planta, tipos_planta_id_tipos_planta) VALUES (?,?,?)");
 
-		$sql_op->bind_param("ss", $plantName, $text);
+		$sql_op->bind_param("ssi", $plantName, $plantText, $plantType);
 
 		if (!$sql_op->execute()) {
 
@@ -350,7 +351,7 @@ function editArticle($articleId, $plantText) {
 
 	try {
 
-		$sql_op = $sql_connection->prepare("UPDATE plantas SET instr_planta = ? WHERE idplantas = ?");
+		$sql_op = $sql_connection->prepare("UPDATE plantas SET texto_planta = ? WHERE id_plantas = ?");
 
 		$sql_op->bind_param("si", $plantText, $articleId);
 
