@@ -2,11 +2,13 @@
 
 <?php
 
+session_start();
+
 require_once '../components/generalControl.php';
 
 if (!isset($_SESSION['username'])) {
 
-    die('You are not authorized to view this page');
+    die('You are not authorized to view this page 1');
 
 }
 

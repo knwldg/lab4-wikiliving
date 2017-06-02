@@ -4,9 +4,11 @@
 
 session_start();
 
+require_once "components/generalControl.php";
+
 if (isset($_SESSION['role'])) {
 
-	header('Location: ../index.html');
+	header('Location: index.html');
 
 }
 

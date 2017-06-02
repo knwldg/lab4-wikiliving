@@ -8,8 +8,4 @@ if (loginUser($_POST['inputUsername'], $_POST['inputPassword'])) {
 
 	header('Location: ../index.html');
 
-	exit;
-
 }
-
-else exit;

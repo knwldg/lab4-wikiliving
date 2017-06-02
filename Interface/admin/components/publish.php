@@ -11,9 +11,9 @@ echo ('
                         <label>Nome do artigo</label><br>
                         <input class="form-control" type="text" placeholder="inserir texto aqui" name="plantName" id="plantName"><br>
                         <label>Nome do autor</label><br>
-                        <input class="form-control" type="text" placeholder="inserir texto aqui" name="plantText" id="plantText"><br>
+                        <input class="form-control" type="text" placeholder="inserir texto aqui" name="authorName" id="authorName"><br>
                         <label>Corpo do artigo</label><br>
-                        <textarea class="form-control" rows="40"></textarea><br>
+                        <textarea class="form-control" rows="40" name="plantText" id="plantText"></textarea><br>
                         <button type="submit" class="btn btn-default">Publicar</button><br>
                     </div>
 
