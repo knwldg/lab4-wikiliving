@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+
+<?php
+
+session_start();
+
+if (isset($_SESSION['role'])) {
+
+	header('Location: ../index.html');
+
+}
+
+?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">

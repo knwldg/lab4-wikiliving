@@ -1,6 +1,15 @@
 <?php
+
 session_start();
 
-require_once "generalControl.php";
+require_once 'generalControl.php';
 
-loginUser($_POST["inputUsername"], $_POST["inputPassword"]);
+if (loginUser($_POST['inputUsername'], $_POST['inputPassword'])) {
+
+	header('Location: ../index.html');
+
+	exit;
+
+}
+
+else exit;
