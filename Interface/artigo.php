@@ -8,6 +8,8 @@ require_once "components/generalControl.php";
 
 contentFetcher($_GET["id"]);
 
+listArticles();
+
 ?>
 
 <html lang="en">
@@ -67,6 +69,9 @@ contentFetcher($_GET["id"]);
                 </li>
                 <li>
                     <a href="#indice">Procurar artigos</a>
+                    <?php
+
+                    ?>
                 </li>
 
 
@@ -147,7 +152,7 @@ contentFetcher($_GET["id"]);
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1><?php echo($plantData[1])?> </h1>
+                <h1><?php echo($plantData["nomePlanta"])?> </h1>
 
                 <!-- Author -->
                 <p class="lead">

@@ -4,7 +4,7 @@ require_once "connection.php";
 
 function checkIfExists($type, $value) {
 
-	// $type define o tipo de check, 1 para email e 2 para username
+	// $type define o tipo de check, 1 para email, 2 para username, 3 para nome de artigo
 	// retorna false se não existir e true se existir ou houver outro erro
 
 	global $sql_connection;
@@ -13,15 +13,20 @@ function checkIfExists($type, $value) {
 
 		case 1:
 
-			$sql_op = $sql_connection->prepare("SELECT email FROM users where email = ?");
+			$sql_op = $sql_connection->prepare("SELECT email FROM users WHERE email = ?");
 
 			break;
 
 		case 2:
 
-			$sql_op = $sql_connection->prepare("SELECT username FROM users where username = ?");
+			$sql_op = $sql_connection->prepare("SELECT username FROM users WHERE username = ?");
 
 			break;
+
+
+		case 3:
+
+			$sql_op = $sql_connection->prepare("SELECT nome_planta FROM plantas WHERE nome_planta = ?");
 
 	}
 
@@ -171,8 +176,6 @@ function loginUser($inputUser, $inputPass) {
 
 				$_SESSION['role'] = $role;
 
-				echo($_SESSION['username'] . $_SESSION['role']);
-
 				return true;
 
 			}
@@ -181,11 +184,8 @@ function loginUser($inputUser, $inputPass) {
 
 		}
 
-		else {
+		else throw new Exception("No user found or password incorrect");
 
-			throw new Exception("No user found or password incorrect");
-
-		}
 
 	}
 
@@ -198,26 +198,6 @@ function loginUser($inputUser, $inputPass) {
 	}
 
 }
-
-/*
-
-function resetPassword($type, $value) {
-
-	// $type representa o tipo de autenticação que o user sabe
-	// 1 para email (e enviar um email ao user com hash random)
-	// 2 para username (e depois de confirmação de email enviar email ao user)
-
-	switch($type) {
-
-		case 1:
-
-
-
-	}
-
-}
-
-*/
 
 function contentFetcher($pageId) {
 
@@ -308,3 +288,106 @@ function privilegeChecker($level, $user) {
 	}
 
 }
+
+function listArticles() {
+
+	global $articleList;
+
+	global $sql_connection;
+
+	$sql_op = $sql_connection->query("SELECT nome_planta, idplantas FROM plantas ORDER BY nome_planta ASC");
+
+	for ($articleList = array (); $row = $sql_op->fetch_assoc(); $articleList[] = $row);
+
+
+}
+
+function addArticle($plantName, $text) {
+
+	global $sql_connection;
+
+	try {
+
+		if (!isset ($sql_connection)) {
+
+			throw new Exception("SQL Connection failure");
+
+		}
+
+		if(checkIfExists(3, $plantName)) {
+
+			throw new Exception("Plant already exists in database");
+
+		}
+
+		$sql_op = $sql_connection->prepare("INSERT INTO plantas (nome_planta, instr_planta) VALUES (?,?)");
+
+		$sql_op->bind_param("ss", $plantName, $text);
+
+		if (!$sql_op->execute()) {
+
+			throw new Exception("Cannot register plant in database");
+
+		}
+
+		else return true;
+
+	}
+
+	catch (Exception $exception) {
+
+		echo ("Error: $exception");
+
+		return false;
+
+	}
+
+}
+
+function editArticle($articleId, $plantText) {
+
+	global $sql_connection;
+
+	try {
+
+		$sql_op = $sql_connection->prepare("UPDATE plantas SET instr_planta = ? WHERE idplantas = ?");
+
+		$sql_op->bind_param("si", $plantText, $articleId);
+
+		if (!$sql_op->execute()) {
+
+			throw new Exception("Cannot update plant record in database");
+
+		}
+
+
+	}
+
+	catch (Exception $exception) {
+
+		echo ("Error: $exception");
+
+	}
+
+
+}
+
+/*
+
+function resetPassword($type, $value) {
+
+	// $type representa o tipo de autenticação que o user sabe
+	// 1 para email (e enviar um email ao user com hash random)
+	// 2 para username (e depois de confirmação de email enviar email ao user)
+
+	switch($type) {
+
+		case 1:
+
+
+
+	}
+
+}
+
+*/

@@ -24,10 +24,10 @@ if (!privilegeChecker(3, $_SESSION["username"])) {
 <meta http-equiv="refresh" content="0;url=pages/index.html">
 <title>SB Admin 2</title>
 <script language="javascript">
-    window.location.href = "pages/index.php"
+    window.location.href = "index.php"
 </script>
 </head>
 <body>
-Go to <a href="pages/index.html">/pages/index.html</a>
+Go to <a href="index.php">index.php</a>
 </body>
 </html>
