@@ -279,18 +279,6 @@ function privilegeChecker($level, $user) {
 
 }
 
-function listArticles() {
-
-	global $articleList;
-
-	global $sql_connection;
-
-	$sql_op = $sql_connection->query("SELECT nome_planta, id_plantas FROM plantas ORDER BY nome_planta ASC");
-
-	for ($articleList = array (); $row = $sql_op->fetch_assoc(); $articleList[] = $row);
-
-	}
-
 function addArticle($plantName, $plantText, $plantType) {
 
 	global $sql_connection;
@@ -358,6 +346,35 @@ function editArticle($articleId, $plantText) {
 	}
 
 }
+
+function listArticles() {
+
+	global $articleList;
+
+	global $sql_connection;
+
+	$sql_op = $sql_connection->query("SELECT nome_planta, id_plantas FROM plantas ORDER BY nome_planta DESC");
+
+	for ($articleList = array (); $row = $sql_op->fetch_assoc(); $articleList[] = $row);
+
+	return true;
+
+}
+
+function listUsers() {
+
+	global $userList;
+
+	global $sql_connection;
+
+	$sql_op = $sql_connection->query("SELECT nome_user, data_registo, roles_id_roles FROM users ORDER BY nome_user DESC");
+
+	for ($userList = array(); $row = $sql_op->fetch_assoc(); $userList[] = $row);
+
+	return true;
+
+}
+
 
 /*
 
