@@ -374,24 +374,3 @@ function listUsers() {
 	return true;
 
 }
-
-
-/*
-
-function resetPassword($type, $value) {
-
-	// $type representa o tipo de autenticação que o user sabe
-	// 1 para email (e enviar um email ao user com hash random)
-	// 2 para username (e depois de confirmação de email enviar email ao user)
-
-	switch($type) {
-
-		case 1:
-
-
-
-	}
-
-}
-
-*/

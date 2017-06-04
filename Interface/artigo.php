@@ -6,9 +6,13 @@ session_start();
 
 require_once "components/generalControl.php";
 
-contentFetcher($_GET["id"]);
-
 listArticles();
+
+if (!contentFetcher($_GET["id"])) {
+
+    die ("Could not get page");
+
+}
 
 ?>
 
