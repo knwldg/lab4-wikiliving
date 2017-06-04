@@ -347,6 +347,32 @@ function editArticle($articleId, $plantText) {
 
 }
 
+function editUser($userId, $role) {
+
+	global $sql_connection;
+
+	try {
+
+		$sql_op = $sql_connection->prepare("UPDATE users SET roles_id_roles = ? WHERE id_users = ?");
+
+		$sql_op->bind_param('si', $role, $userId);
+
+		if (!$sql_op->execute()) {
+
+			throw new Exception('Cannot update user record in database');
+
+		}
+
+	}
+
+	catch (Exception $exception) {
+
+		echo ("Error: $exception");
+
+	}
+
+}
+
 function listArticles() {
 
 	global $articleList;
@@ -367,7 +393,7 @@ function listUsers() {
 
 	global $sql_connection;
 
-	$sql_op = $sql_connection->query("SELECT nome_user, data_registo, roles_id_roles FROM users ORDER BY nome_user DESC");
+	$sql_op = $sql_connection->query("SELECT nome_user, data_registo, roles_id_roles, id_users FROM users ORDER BY id_users ASC");
 
 	for ($userList = array(); $row = $sql_op->fetch_assoc(); $userList[] = $row);
 

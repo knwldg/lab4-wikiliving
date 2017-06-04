@@ -405,6 +405,7 @@ listUsers();
 
                     echo($userList[$i]['roles_id_roles']);
 	                echo($userList[$i]['nome_user']);
+	                echo($userList[$i]['id_users']);
 
                 }
 
