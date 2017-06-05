@@ -1,28 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-
-session_start();
-
-require_once '../components/generalControl.php';
-
-if (!isset($_SESSION['username'])) {
-
-    die('You are not authorized to view this page 1');
-
-}
-
-else {
-
-    if(!privilegeChecker(3, $_SESSION['username'])) {
-
-        die ('You are not authorized to view this page');
-
-    }
-
-}
-
-?>
 
 <html lang="en">
 
