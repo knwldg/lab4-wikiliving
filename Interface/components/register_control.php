@@ -6,6 +6,6 @@ require_once 'generalControl.php';
 
 if (registerUser($_POST['inputUsername'], $_POST['inputPassword'], $_POST['email'])) {
 
-	header('Location: ../index.html');
+	header('Location: ../index.php');
 
 }
