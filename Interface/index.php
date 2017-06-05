@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WikiLiving</title>
+    <title>Wikiliving</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
             Menu <i class="fa fa-bars"></i>
           </button>
           <a class="navbar-brand page-scroll">
-            <i class="fa fa-play-circle"></i> <span class="light">Wiki</span>Living
+            <i class="fa fa-play-circle"></i> <span class="light">Wiki</span> Living
           </a>
         </div>
 

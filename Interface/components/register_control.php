@@ -1,20 +1,11 @@
 <?php
+
 session_start();
 
-require_once "generalControl.php";
+require_once 'generalControl.php';
 
-if (registerUser($_POST["inputUsername"], $_POST["inputPassword"], $_POST["email"])) {
+if (registerUser($_POST['inputUsername'], $_POST['inputPassword'], $_POST['email'])) {
 
-	header("Location: ../index.html");
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-	header('Location: ../index.php');
-=======
-	exit;
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
-=======
-	exit;
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
+	header('Location: ../index.html');
 
 }

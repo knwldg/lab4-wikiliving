@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start();?>
 <html lang="en">
 
 <head>
@@ -48,13 +49,13 @@
                         <a class="page-scroll" style="text-transform: none;!important;" href="artigo.php">Plantas</a>
                     </li>
                     <?php if(isset($_SESSION['role'])){
-                        if ($_SESSION['role'] === 3){?>
+                        if ($_SESSION['role'] == 3){?>
                             <li>
                                 <a class="page-scroll" style="text-transform: none;!important;" href="admin/index.php">Admin</a>
                             </li>
                         <?php }};
 
-                    if(isset($_SESSION['role'])){?>
+                    if(isset($_SESSION['username'])){?>
                         <li>
                             <a class="page-scroll" style="text-transform: none;!important;" href="components/logout.php">Logout</a>
                         </li>

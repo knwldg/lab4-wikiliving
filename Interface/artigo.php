@@ -3,15 +3,6 @@
 
 session_start();
 
-<<<<<<< HEAD
-=======
-require_once "components/generalControl.php";
-
-contentFetcher($_GET["id"]);
-
-listArticles();
-
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
 ?>
 
 <html lang="en">
@@ -77,7 +68,6 @@ listArticles();
 <!-- Page Content -->
 <br><br><br>
 
-<<<<<<< HEAD
 <div class="container">
 
     <div class="row">
@@ -98,24 +88,6 @@ listArticles();
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <span class="input-group-btn">
-=======
-        <div class="row">
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-                <!-- Informações base do fruto -->
-                
-                <div class="well">
-                    <h3 class="h3 text-center"><?php echo($plantData["nomePlanta"])?>></h3>
-                    <img class="col-centered img-responsive" src="<?php echo("img/$article_image.jpg");?>" alt="">
-                </div>
-                
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4>Procurar na Wikiliving</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
                             <button class="btn btn-default" type="button">
                                 <span class="glyphicon glyphicon-search"></span>
                         </button>
@@ -158,101 +130,9 @@ listArticles();
 
 
 
-<<<<<<< HEAD
         </div>
         <!-- Blog Post Content Column -->
         <div class="col-lg-8 well">
-=======
-            </div>
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
-
-                <!-- Blog Post -->
-
-                <!-- Title -->
-                <h1><?php echo($plantData["nomePlanta"])?> </h1>
-
-                <!-- Author -->
-                <p class="lead">
-                    by <a href="#">Nome do utilizador que escrever (editor ou admin)</a>
-                </p>
-
-                <hr>
-
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Associar à BD a data do artigo</p>
-
-                <hr>
-
-
-
-                <hr>
-
-                <!-- Post Content -->
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
-                <hr>
-
-                <!--&lt;!&ndash; Blog Comments &ndash;&gt;-->
-
-                <!--&lt;!&ndash; Comments Form &ndash;&gt;-->
-                <!--<div class="well">-->
-                    <!--<h4>Leave a Comment:</h4>-->
-                    <!--<form role="form">-->
-                        <!--<div class="form-group">-->
-                            <!--<textarea class="form-control" rows="3"></textarea>-->
-                        <!--</div>-->
-                        <!--<button type="submit" class="btn btn-primary">Submit</button>-->
-                    <!--</form>-->
-                <!--</div>-->
-
-                <!--<hr>-->
-
-                <!--&lt;!&ndash; Posted Comments &ndash;&gt;-->
-
-                <!--&lt;!&ndash; Comment &ndash;&gt;-->
-                <!--<div class="media">-->
-                    <!--<a class="pull-left" href="#">-->
-                        <!--<img class="media-object" src="http://placehold.it/64x64" alt="">-->
-                    <!--</a>-->
-                    <!--<div class="media-body">-->
-                        <!--<h4 class="media-heading">Start Bootstrap-->
-                            <!--<small>August 25, 2014 at 9:30 PM</small>-->
-                        <!--</h4>-->
-                        <!--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--&lt;!&ndash; Comment &ndash;&gt;-->
-                <!--<div class="media">-->
-                    <!--<a class="pull-left" href="#">-->
-                        <!--<img class="media-object" src="http://placehold.it/64x64" alt="">-->
-                    <!--</a>-->
-                    <!--<div class="media-body">-->
-                        <!--<h4 class="media-heading">Start Bootstrap-->
-                            <!--<small>August 25, 2014 at 9:30 PM</small>-->
-                        <!--</h4>-->
-                        <!--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.-->
-                        <!--&lt;!&ndash; Nested Comment &ndash;&gt;-->
-                        <!--<div class="media">-->
-                            <!--<a class="pull-left" href="#">-->
-                                <!--<img class="media-object" src="http://placehold.it/64x64" alt="">-->
-                            <!--</a>-->
-                            <!--<div class="media-body">-->
-                                <!--<h4 class="media-heading">Nested Start Bootstrap-->
-                                    <!--<small>August 25, 2014 at 9:30 PM</small>-->
-                                <!--</h4>-->
-                                <!--Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--&lt;!&ndash; End Nested Comment &ndash;&gt;-->
-                    </div>
-                </div>
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
 
             <!-- Blog Post -->
 

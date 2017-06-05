@@ -19,7 +19,7 @@ function checkIfExists($type, $value) {
 
 		case 2:
 
-			$sql_op = $sql_connection->prepare("SELECT username FROM users WHERE username = ?");
+			$sql_op = $sql_connection->prepare("SELECT nome_user FROM users WHERE nome_user = ?");
 
 			break;
 
@@ -34,14 +34,13 @@ function checkIfExists($type, $value) {
 
 	try {
 
-		if (isset ($type)) {
+		if (isset ($type) && isset($sql_op)) {
 
-
-			$sql_op->bind_param("s", $value);
+			$sql_op->bind_param('s', $value);
 
 			if (!$sql_op->execute()) {
 
-				throw new Exception("SQL query failure");
+				throw new Exception('SQL query failure');
 
 			}
 
@@ -63,7 +62,7 @@ function checkIfExists($type, $value) {
 
 		else {
 
-			throw new Exception("Type not defined");
+			throw new Exception('Type not defined');
 
 		}
 
@@ -71,7 +70,7 @@ function checkIfExists($type, $value) {
 
 	catch (Exception $exception) {
 
-		echo("Error: ");
+		echo("Error: $exception");
 
 		return true;
 
@@ -90,37 +89,37 @@ function registerUser($inputUser, $inputPass, $inputEmail) {
 
 		if (!isset ($sql_connection)) {
 
-			throw new Exception("SQL Connection failure");
+			throw new Exception('SQL Connection failure');
 
 		}
 
-		if (!isset($_POST["inputUsername"]) || !isset($_POST["email"]) || !isset($_POST["inputPassword"]) || !isset($_POST["confirmPassword"]) || $_POST["inputPassword"] != $_POST["confirmPassword"]) {
+		if (!isset($_POST['inputUsername']) || !isset($_POST['email']) || !isset($_POST['inputPassword']) || !isset($_POST['confirmPassword']) || $_POST['inputPassword'] != $_POST['confirmPassword']) {
 
-			throw new Exception("One or more fields were incorrectly filled");
+			throw new Exception('One or more fields were incorrectly filled');
 
 		}
 
 		if(checkIfExists(1, $inputEmail)) {
 
-			throw new Exception("Email already exists in database");
+			throw new Exception('Email already exists in database');
 
 		}
 
 		if(checkIfExists(2, $inputUser)) {
 
-			throw new Exception("User already exists in database");
+			throw new Exception('User already exists in database');
 
 		}
 
 		$hash = password_hash($inputPass, PASSWORD_DEFAULT);
 
-		$sql_op = $sql_connection->prepare("INSERT INTO users (email, username, password, roles_id_roles) VALUES (?,?,?,1)");
+		$sql_op = $sql_connection->prepare("INSERT INTO users (email, nome_user, password_hash, roles_id_roles) VALUES (?,?,?,1)");
 
-		$sql_op->bind_param("sss", $inputEmail, $inputUser, $hash);
+		$sql_op->bind_param('sss', $inputEmail, $inputUser, $hash);
 
 		if (!$sql_op->execute()) {
 
-			throw new Exception("Cannot register user in database");
+			throw new Exception('Cannot register user in database');
 
 		}
 
@@ -144,29 +143,13 @@ function loginUser($inputUser, $inputPass) {
 
 	try {
 
-		/* Implementar depois de fazer página de logout
+		$sql_op = $sql_connection->prepare("SELECT password_hash, roles_id_roles FROM users WHERE nome_user = ? LIMIT 1");
 
-		if (isset($_SESSION["role"])) {
-
-			throw new Exception("User is already logged in");
-
-		}
-
-		*/
-<<<<<<< HEAD
-
-		$sql_op = $sql_connection->prepare("SELECT password, roles_id_roles FROM users WHERE username = ? LIMIT 1");
-
-=======
-
-		$sql_op = $sql_connection->prepare("SELECT password, roles_id_roles FROM users WHERE username = ? LIMIT 1");
-
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
-		$sql_op->bind_param("s", $inputUser);
+		$sql_op->bind_param('s', $inputUser);
 
 		if (!$sql_op->execute()) {
 
-			throw new Exception("SQL query error");
+			throw new Exception('SQL query error');
 
 		}
 
@@ -188,18 +171,17 @@ function loginUser($inputUser, $inputPass) {
 
 			}
 
-			else throw new Exception("No user found or password incorrect");
+			else throw new Exception('No user found or password incorrect');
 
 		}
 
-		else throw new Exception("No user found or password incorrect");
-
+		else throw new Exception('No user found or password incorrect');
 
 	}
 
 	catch(Exception $exception) {
 
-		echo "Error: $exception";
+		echo("Error: $exception");
 
 		return false;
 
@@ -209,31 +191,31 @@ function loginUser($inputUser, $inputPass) {
 
 function contentFetcher($pageId) {
 
+	// define o array $plantData com os índices pageId, nomePlanta e textoPlanta
+
 	global $plantData;
 
 	global $sql_connection;
 
 	try {
 
-		$sql_op = $sql_connection->prepare("SELECT nome_planta, , instr_planta, usos_planta FROM plantas WHERE idplantas = ?");
+		$sql_op = $sql_connection->prepare("SELECT nome_planta, texto_planta FROM plantas WHERE id_plantas = ?");
 
-		$sql_op->bind_param("i", $pageId);
+		$sql_op->bind_param('i', $pageId);
 
 		if (!$sql_op ->execute()) {
 
-			throw new Exception("SQL query error");
+			throw new Exception('SQL query error');
 
 		}
 
 		$sql_op->store_result();
 
-		$sql_op->bind_result($nome_planta, $tipo_planta, $instr_planta, $usos_planta);
+		$sql_op->bind_result($nome_planta, $texto_planta);
 
 		$sql_op->fetch();
 
-		echo ("$pageId, $nome_planta, $tipo_planta, $instr_planta, $usos_planta");
-
-		$plantData = array("pageId"=>$pageId, "nomePlanta"=>$nome_planta, "tipoPlanta"=>$tipo_planta, "instrucoesPlanta"=>$instr_planta, "usosPlanta"=>$usos_planta);
+		$plantData = array('pageId'=>$pageId, 'nomePlanta'=>$nome_planta, 'textoPlanta'=>$texto_planta);
 
 		return true;
 
@@ -257,13 +239,13 @@ function privilegeChecker($level, $user) {
 
 	try {
 
-		$sql_op = $sql_connection->prepare("SELECT roles_id_roles FROM users WHERE username = ?");
+		$sql_op = $sql_connection->prepare("SELECT roles_id_roles FROM users WHERE nome_user = ?");
 
-		$sql_op->bind_param("s", $user);
+		$sql_op->bind_param('s', $user);
 
 		if (!$sql_op->execute())  {
 
-			throw new Exception("SQL query error");
+			throw new Exception('SQL query error');
 
 		}
 
@@ -281,7 +263,7 @@ function privilegeChecker($level, $user) {
 
 		else {
 
-			throw new Exception("User is not authorized to view this page");
+			throw new Exception('Permission not granted');
 
 		}
 
@@ -289,7 +271,7 @@ function privilegeChecker($level, $user) {
 
 	catch (Exception $exception) {
 
-		echo("Error : $exception");
+		echo("Error: $exception");
 
 		return false;
 
@@ -297,20 +279,7 @@ function privilegeChecker($level, $user) {
 
 }
 
-function listArticles() {
-
-	global $articleList;
-
-	global $sql_connection;
-
-	$sql_op = $sql_connection->query("SELECT nome_planta, idplantas FROM plantas ORDER BY nome_planta ASC");
-
-	for ($articleList = array (); $row = $sql_op->fetch_assoc(); $articleList[] = $row);
-
-
-}
-
-function addArticle($plantName, $text) {
+function addArticle($plantName, $plantText, $plantType) {
 
 	global $sql_connection;
 
@@ -318,23 +287,23 @@ function addArticle($plantName, $text) {
 
 		if (!isset ($sql_connection)) {
 
-			throw new Exception("SQL Connection failure");
+			throw new Exception('SQL Connection failure');
 
 		}
 
 		if(checkIfExists(3, $plantName)) {
 
-			throw new Exception("Plant already exists in database");
+			throw new Exception('Plant already exists in database');
 
 		}
 
-		$sql_op = $sql_connection->prepare("INSERT INTO plantas (nome_planta, instr_planta) VALUES (?,?)");
+		$sql_op = $sql_connection->prepare("INSERT INTO plantas (nome_planta, texto_planta, tipos_planta_id_tipos_planta) VALUES (?,?,?)");
 
-		$sql_op->bind_param("ss", $plantName, $text);
+		$sql_op->bind_param('ssi', $plantName, $plantText, $plantType);
 
 		if (!$sql_op->execute()) {
 
-			throw new Exception("Cannot register plant in database");
+			throw new Exception('Cannot register plant in database');
 
 		}
 
@@ -358,16 +327,15 @@ function editArticle($articleId, $plantText) {
 
 	try {
 
-		$sql_op = $sql_connection->prepare("UPDATE plantas SET instr_planta = ? WHERE idplantas = ?");
+		$sql_op = $sql_connection->prepare("UPDATE plantas SET texto_planta = ? WHERE id_plantas = ?");
 
-		$sql_op->bind_param("si", $plantText, $articleId);
+		$sql_op->bind_param('si', $plantText, $articleId);
 
 		if (!$sql_op->execute()) {
 
-			throw new Exception("Cannot update plant record in database");
+			throw new Exception('Cannot update plant record in database');
 
 		}
-
 
 	}
 
@@ -377,29 +345,34 @@ function editArticle($articleId, $plantText) {
 
 	}
 
-
 }
 
-/*
+function editUser($userId, $role) {
 
-function resetPassword($type, $value) {
+	global $sql_connection;
 
-	// $type representa o tipo de autenticação que o user sabe
-	// 1 para email (e enviar um email ao user com hash random)
-	// 2 para username (e depois de confirmação de email enviar email ao user)
+	try {
 
-	switch($type) {
+		$sql_op = $sql_connection->prepare("UPDATE users SET roles_id_roles = ? WHERE id_users = ?");
 
-		case 1:
+		$sql_op->bind_param('si', $role, $userId);
 
+		if (!$sql_op->execute()) {
 
+			throw new Exception('Cannot update user record in database');
+
+		}
+
+	}
+
+	catch (Exception $exception) {
+
+		echo ("Error: $exception");
 
 	}
 
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 function listArticles() {
 
 	global $articleList;
@@ -427,9 +400,3 @@ function listUsers() {
 	return true;
 
 }
-=======
-*/
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
-=======
-*/
->>>>>>> ca2793cfdf520773504417d28997c175101a5420

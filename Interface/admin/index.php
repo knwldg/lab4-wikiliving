@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 <?php
 
 session_start();
@@ -23,10 +21,6 @@ if (!privilegeChecker(3, $_SESSION["username"])) {
 }
 
 listUsers();
-=======
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
-=======
->>>>>>> ca2793cfdf520773504417d28997c175101a5420
 
 ?>
 
@@ -186,48 +180,48 @@ listUsers();
                     <h1 class="page-header">Ver artigos publicados</h1>
                     <div class="row">
                         <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
+                            <img src="../../img/doge.bmp"><br>
                             <label class="">tomate</label>
                         </div>
                         <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
-                            <label class="">tomate</label>
-                        </div>
-
-                        <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
-                            <label class="">tomate</label>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
-                            <label class="">tomate</label>
-                        </div>
-                        <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
+                            <img src="../../img/doge.bmp"><br>
                             <label class="">tomate</label>
                         </div>
 
                         <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
+                            <img src="../../img/doge.bmp"><br>
                             <label class="">tomate</label>
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
+                            <img src="../../img/doge.bmp"><br>
                             <label class="">tomate</label>
                         </div>
                         <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
+                            <img src="../../img/doge.bmp"><br>
                             <label class="">tomate</label>
                         </div>
 
                         <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
-                            <img src="../img/doge.bmp"><br>
+                            <img src="../../img/doge.bmp"><br>
+                            <label class="">tomate</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
+                            <img src="../../img/doge.bmp"><br>
+                            <label class="">tomate</label>
+                        </div>
+                        <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
+                            <img src="../../img/doge.bmp"><br>
+                            <label class="">tomate</label>
+                        </div>
+
+                        <div class="visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center ">
+                            <img src="../../img/doge.bmp"><br>
                             <label class="">tomate</label>
                         </div>
 
