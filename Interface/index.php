@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Wikiliving</title>
+    <title>WikiLiving</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +39,7 @@
             Menu <i class="fa fa-bars"></i>
           </button>
           <a class="navbar-brand page-scroll">
-            <i class="fa fa-play-circle"></i> <span class="light">Wiki</span> Living
+            <i class="fa fa-play-circle"></i> <span class="light">Wiki</span>Living
           </a>
         </div>
 
@@ -49,14 +51,23 @@
               <a href="#page-top"></a>
             </li>
             <li>
-              <a class="page-scroll" style="text-transform: none;!important; href="#about">Plantas</a>
+              <a class="page-scroll" style="text-transform: none;!important;" href="index.php">Index</a>
             </li>
             <li>
-              <a class="page-scroll" style="text-transform: none;!important; href="#download">Grupo</a>
+              <a class="page-scroll" style="text-transform: none;!important;" href="artigo.php">Plantas</a>
             </li>
+            <?php if(isset($_SESSION['role'])){
+              if ($_SESSION['role'] == 3){?>
             <li>
-              <a class="page-scroll" style="text-transform: none;!important; href="#contact">Cenas</a>
+              <a class="page-scroll" style="text-transform: none;!important;" href="admin/index.php">Admin</a>
             </li>
+            <?php }};
+
+            if(isset($_SESSION['username'])){?>
+            <li>
+              <a class="page-scroll" style="text-transform: none;!important;" href="components/logout.php">Logout</a>
+            </li>
+            <?php }?>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -71,8 +82,8 @@
 
       <div style="border-radius: 5px;" class="well-index col-lg-4 col-md-4 col-sm-4 text-center"><br>
         <h1 class="notopacity form-inline" style="text-transform: none;!important; color: white;">Entra já na nossa comunidade!</h1><br>
-        <p><a class="notopacity btn btn-lg btn-wiki" href="Login.html" role="button">Log In</a> </p>
-        <p><a class="notopacity btn btn-lg btn-wiki" href="register.html" role="button">Registar</a> </p>
+        <p><a class="notopacity btn btn-lg btn-wiki" href="login.php" role="button">Log In</a> </p>
+        <p><a class="notopacity btn btn-lg btn-wiki" href="register.php" role="button">Registar</a> </p>
 
       </div>
 

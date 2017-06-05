@@ -7,7 +7,7 @@ require_once "../components/generalControl.php";
 
 if (!isset($_SESSION["role"])) {
 
-    die ("User is not logged in");
+    die("User is not logged in");
 
 }
 

@@ -1,17 +1,4 @@
 <!DOCTYPE html>
-
-<?php
-
-session_start();
-
-if (isset($_SESSION['role'])) {
-
-    die('User is already logged in');
-
-}
-
-?>
-
 <html lang="en">
 
 <head>
@@ -91,16 +78,24 @@ if (isset($_SESSION['role'])) {
 
                 <br><br><div class="well-index" style="color: white"> <h2 class="form-signin-heading text-center">Do que estás à espera?</h2></div> <br>
 
+
+
                 <input type="text" name="inputUsername" id="inputUsername" class="form-control form-control-wiki" placeholder="Username" required autofocus> <br>
+
+
 
                 <input type="password" id="inputPassword" class="form-control form-control-wiki" placeholder="Password" name="inputPassword" required> <br>
 
+
+
                 <input type="password" id="confirmPassword" class="form-control form-control-wiki" placeholder="Confirmar password" name="confirmPassword" required><br>
+
+
 
                 <input type="email" id="email" class="form-control form-control-wiki" placeholder="Email" name="email" required> <br>
 
                 <input type="submit" tabindex="7" style="background-color: #5cb85c; border-color:#5cb85c" class=" btn btn-lg btn-primary btn-block" value="Regista-te já!"><br>
-                <a  style="color: white;" class="text-center" href="index.php">Voltar Atrás</a>
+                <a  style="color: white;" class="text-center" href="index.html">Voltar Atrás</a>
 
             </form>
             <div class="invisible col-lg-4 col-md-4 col-sm-4">truques e dicas
@@ -108,6 +103,11 @@ if (isset($_SESSION['role'])) {
 
         </div>
     </div>
+
+
+
+
+
 
     <div class="col-md-4 col-lg-4 col-sm-4 invisible "> olá</div>
     <div class="col-md-4 col-lg-4 col-sm-4">
@@ -147,10 +147,83 @@ if (isset($_SESSION['role'])) {
 
 <!-- Bootstrap Core JavaScript -->
 <script src="dist/js/bootstrap.min.js"></script>
-
+<
 <script src="dist/js/grayscale.min.js"></script>
 
 </body>
 
+
+
 </html>
 
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+  <!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--&lt;!&ndash; The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags &ndash;&gt;-->
+    <!--<meta name="description" content="">-->
+    <!--<meta name="author" content="">-->
+    <!--<link rel="icon" href="../favicon.ico">-->
+
+    <!--<title></title>-->
+
+    <!--&lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
+    <!--<link href="dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!--&lt;!&ndash; Custom styles for this template &ndash;&gt;-->
+    <!--<link href="signin.css" rel="stylesheet">-->
+
+    <!--&lt;!&ndash; HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries &ndash;&gt;-->
+    <!--&lt;!&ndash;[if lt IE 9]>-->
+      <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
+      <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+    <!--<![endif]&ndash;&gt;-->
+  <!--</head>-->
+
+  <!--<body>-->
+
+    <!--<div class="container">-->
+        <!--<div class="row center-block text-center">-->
+            <!--<div class="invisible col-lg-4 col-md-4 col-sm-4">truques e dicas</div>-->
+            <!--<div class="col-lg-4 col-md-4 col-sm-4">-->
+
+      <!--<form class="form-register" id="registerForm" action="components/register_control.php" method="post" role="form">-->
+
+          <!--<br><br><h2 class="form-signin-heading">WikiLiving Register</h2><br>-->
+
+          <!--&lt;!&ndash;<label for="inputUsername" class="sr-only">Username</label>&ndash;&gt;-->
+
+          <!--<input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="username" required autofocus> <br>-->
+
+          <!--&lt;!&ndash;<label for="inputPassword" class="sr-only">Password</label>&ndash;&gt;-->
+
+          <!--<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="inputPassword" required> <br>-->
+
+          <!--&lt;!&ndash;<label for="confirmPassword" class="sr-only">Confirm Password</label>&ndash;&gt;-->
+
+          <!--<input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" name="confirmPassword" required><br>-->
+
+          <!--&lt;!&ndash;<label for="email" class="sr-only">Email</label>&ndash;&gt;-->
+
+          <!--<input type="email" id="email" class="form-control" placeholder="Your email here" name="email" required> <br>-->
+
+          <!--<input type="submit" tabindex="7" class=" btn btn-lg btn-primary btn-block" value="Register Now">-->
+          <!--<a  class="text-center" href="index.html">Voltar Atrás</a>-->
+
+      <!--</form>-->
+                <!--<div class="invisible col-lg-4 col-md-4 col-sm-4">truques e dicas-->
+            <!--</div>-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div> &lt;!&ndash; /container &ndash;&gt;-->
+
+  <!--</body>-->
+<!--</html>-->
