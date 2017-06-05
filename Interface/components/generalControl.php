@@ -153,9 +153,15 @@ function loginUser($inputUser, $inputPass) {
 		}
 
 		*/
+<<<<<<< HEAD
 
 		$sql_op = $sql_connection->prepare("SELECT password, roles_id_roles FROM users WHERE username = ? LIMIT 1");
 
+=======
+
+		$sql_op = $sql_connection->prepare("SELECT password, roles_id_roles FROM users WHERE username = ? LIMIT 1");
+
+>>>>>>> ca2793cfdf520773504417d28997c175101a5420
 		$sql_op->bind_param("s", $inputUser);
 
 		if (!$sql_op->execute()) {
@@ -393,6 +399,7 @@ function resetPassword($type, $value) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function listArticles() {
 
 	global $articleList;
@@ -420,6 +427,9 @@ function listUsers() {
 	return true;
 
 }
+=======
+*/
+>>>>>>> ca2793cfdf520773504417d28997c175101a5420
 =======
 */
 >>>>>>> ca2793cfdf520773504417d28997c175101a5420

@@ -8,7 +8,11 @@ if (registerUser($_POST["inputUsername"], $_POST["inputPassword"], $_POST["email
 	header("Location: ../index.html");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	header('Location: ../index.php');
+=======
+	exit;
+>>>>>>> ca2793cfdf520773504417d28997c175101a5420
 =======
 	exit;
 >>>>>>> ca2793cfdf520773504417d28997c175101a5420

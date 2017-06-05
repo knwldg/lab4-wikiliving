@@ -2,6 +2,7 @@
 <html lang="en">
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 
 session_start();
@@ -22,6 +23,8 @@ if (!privilegeChecker(3, $_SESSION["username"])) {
 }
 
 listUsers();
+=======
+>>>>>>> ca2793cfdf520773504417d28997c175101a5420
 =======
 >>>>>>> ca2793cfdf520773504417d28997c175101a5420
 
