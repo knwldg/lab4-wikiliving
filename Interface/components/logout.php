@@ -2,9 +2,8 @@
 
 session_start();
 setcookie(session_name(), '', 100);
+$_SESSION = array();
 session_unset();
 session_destroy();
-
-$_SESSION = array();
 
 header('Location: ../index.php');
