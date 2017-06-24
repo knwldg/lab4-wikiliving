@@ -373,17 +373,15 @@ function editUser($userId, $role) {
 
 }
 
-function listArticles() {
+function listPlants() {
 
-	global $articleList;
+	global $plantList;
 
 	global $sql_connection;
 
 	$sql_op = $sql_connection->query("SELECT nome_planta, id_plantas FROM plantas ORDER BY nome_planta DESC");
 
-	for ($articleList = array (); $row = $sql_op->fetch_assoc(); $articleList[] = $row);
-
-	return true;
+	for ($plantList = array (); $row = $sql_op->fetch_assoc(); $plantList[] = $row);
 
 }
 
@@ -396,7 +394,5 @@ function listUsers() {
 	$sql_op = $sql_connection->query("SELECT nome_user, roles_id_roles, id_users FROM users ORDER BY id_users ASC");
 
 	for ($userList = array(); $row = $sql_op->fetch_assoc(); $userList[] = $row);
-
-	return true;
 
 }
