@@ -197,3 +197,24 @@ p{
     color: #fff;
     text-transform: uppercase;
 }
+
+.subs{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    padding-top: 5px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5; /* number of lines to show = Y */
+    line-height: 17px;        /* fallback = X */
+    max-height: 92px;       /* fallback = Y*X */
+}
+
+.subs2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8; /* number of lines to show = Y */
+    line-height: 22px;        /* fallback = X */
+    max-height: 180px;       /* fallback = Y*X */
+}

@@ -18,35 +18,17 @@
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-                <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3){?>
-=======
-                <?php if (isset($_SESSION['role'])){?>
->>>>>>> working
+
                 <li>
                     <a class="page-scroll" style="text-transform: none;!important;" href="index_log.php">Index</a>
                 </li> 
-                <?php }?>
+
                 <?php if (isset($_SESSION['role'])){?>
                 <li>
                     <a class="page-scroll" style="text-transform: none;!important;" href="escolher_artigo.php">Escolher Artigo</a>
                 </li>
-<<<<<<< HEAD
-                <?php }}?>
-                <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3){?>
-=======
-
-                <li>
-                    <a class="page-scroll" style="text-transform: none;!important;" href="escolher_artigo.php">Escolher Artigo</a>
-                </li>
-
-                <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3 || $_SESSION['role'] == 2){?>
->>>>>>> Stashed changes
-=======
                 <?php }?>
                 <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3 || $_SESSION['role'] == 2){?>
->>>>>>> working
                     <li>
                         <a class="page-scroll"  href="admin/index.php">Admin</a>
                     </li>
@@ -54,13 +36,13 @@
 
                 <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3){?>
                     <li>
-                        <a class="page-scroll"  href="components/logout.php">Log Out</a>
+                        <a class="page-scroll"  href="../components/logout.php">Log Out</a>
                     </li>
                 <?php }}?>
 
 	            <?php if (!isset($_SESSION['role'])){?>
                     <li>
-                        <a class="page-scroll" style="text-transform: none;!important;" href="../index.php">Login</a>
+                        <a class="page-scroll" style="text-transform: none;!important;" href="/login.php">Login</a>
                     </li>
 	            <?php }?>
             </ul>

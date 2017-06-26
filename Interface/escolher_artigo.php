@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <?php
 session_start();
 require_once '../Interface/components/connection.php';
@@ -8,8 +10,6 @@ listPlants();
 global $plantList;
 
 ?>
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -66,21 +66,13 @@ global $plantList;
                     echo("
                     
                 <div class=\"col-md-4 portfolio-item\">
-                    <a href=\"artigo.php?id=".$plantList[$i]['id_plantas']."\">
+                    <a href=\"#\">
                         <img class=\"img-responsive\" src=\"../Interface/img/".$plantList[$i]['id_plantas'].".png\" alt=\"\">
                     </a>
                     <h3>
                         <a href=\"artigo.php?id=".$plantList[$i]['id_plantas']."\">".$plantList[$i]['nome_planta']."</a>
                     </h3>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-=======
-                    <p class='subs2'>".$plantList[$i]['subtitulo_planta']."</p>
->>>>>>> Stashed changes
-=======
                     <p>".$plantList[$i]['subtitulo_planta']."</p>
->>>>>>> working
                 </div>
                     
                     ");

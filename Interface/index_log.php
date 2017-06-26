@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<?php session_start();?>
-=======
-<?php
-session_start();
-require_once '../Interface/components/connection.php';
-require_once '../Interface/components/generalControl.php';
-
-listPlants();
-
-global $plantList;
-
-?>
->>>>>>> Stashed changes
-=======
 <?php session_start();
 
 require_once "components/generalControl.php";
@@ -21,7 +5,6 @@ require_once "components/generalControl.php";
 listPlants();
 
 ?>
->>>>>>> working
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,37 +45,6 @@ listPlants();
 
     </div>
 
-      <div class="sm-spacer120"></div>
-
-      <div class="row well-index text-black">
-
-          <?php
-
-          for ($i = 0; $i < 3; $i++) {?>
-
-<<<<<<< Updated upstream
-          <div style="margin-left:50px;" class="col-lg-3 col-md-3 col-sm-3 well text-black">é para por sinopses de artigos</div>
-
-          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black"><?=$plantList[1]['nome_planta']?></div>
-
-<<<<<<< HEAD
-          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black"></div>
-=======
-          <div class="col-sm-3 col-sm-offset-1 well subs"><?=$plantList[$i]['subtitulo_planta']?></div>
-
-          <?php } ?>
->>>>>>> Stashed changes
-=======
-          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black">
-        <?=$plantList[1]['subtitulo_planta']?>
-          </div>
->>>>>>> working
-
-      </div>
-
-
-
-<div class="sm-spacer15"></div>
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -108,6 +60,7 @@ listPlants();
 
   <!-- Bootstrap Core JavaScript -->
   <script src="dist/js/bootstrap.min.js"></script>
+  <
   <script src="dist/js/grayscale.min.js"></script>
 
   </body>
