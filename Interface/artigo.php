@@ -42,7 +42,7 @@ global $plantList;
 
 <body>
 
-<?php include "components/navbar.php"?>
+<?php include "components/navbar.php";?>
 
 <!-- Page Content -->
 
@@ -89,6 +89,7 @@ global $plantList;
                                 
                                 <li><a href=\"".$plantList[$i]['id_plantas']."\">".$plantList[$i]['nome_planta']."</a>
                             </li>
+                            
                                 
                                 ");
 
@@ -115,6 +116,7 @@ global $plantList;
             <!-- Title -->
             <h1 class="text-black"><?=$plantData['nomePlanta']?></h1>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             <!-- Author
             <p class="lead">
@@ -145,18 +147,28 @@ global $plantList;
 >>>>>>> Stashed changes
 
             <hr>
+=======
+	        <?php
+	        if ($_SESSION['role'] == 2 || $_SESSION['role'] == 3) {
+>>>>>>> working
 
+		        ?><button onclick="
+		            document.getElementById('textoPlanta').setAttribute('contenteditable', 'true');
+		            CKEDITOR.inline('textoPlanta');
+		        "></button>
 
+	        <?php } ?>
 
+            <hr>
 
+<form name="mainArticle" method="post" action="admin/components/editArticle.php"></form>
             <!-- Post Content -->
-
-            <div class="text-black" style="color: black!important;">
+            <div id="textoPlanta" contenteditable="false" class="text-black" style="color: black!important;">
                 <p style="color: #000000 !important;" class="lead"><?=$plantData['textoPlanta']?></p>
             </div>
             <hr>
 
-            <!--                                            Cena para postar comentários                                    -->
+            <!--                                            Cena para postar comentários
             <!-- Comments Form -->
             <div class="well text-black">
                 <h4>Leave a Comment:</h4>
@@ -220,15 +232,6 @@ global $plantList;
 
 </div>
 
-
-
-
-
-
-
-<footer style="color: white" class="footer text-center">
-    <p>&copy; 2016 Company, Inc.</p>
-</footer>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="dist/assets/js/ie10-viewport-bug-workaround.js"></script>
 
@@ -244,6 +247,11 @@ global $plantList;
 <script src="dist/js/bootstrap.min.js"></script>
 <
 <script src="dist/js/grayscale.min.js"></script>
+<script src="admin/ckeditor/ckeditor.js"></script>
+<script>
+    // Turn off automatic editor creation first.
+    CKEDITOR.disableAutoInline = true;
+</script>
 
 </body>
 

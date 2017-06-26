@@ -72,11 +72,15 @@ global $plantList;
                     <h3>
                         <a href=\"artigo.php?id=".$plantList[$i]['id_plantas']."\">".$plantList[$i]['nome_planta']."</a>
                     </h3>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
 =======
                     <p class='subs2'>".$plantList[$i]['subtitulo_planta']."</p>
 >>>>>>> Stashed changes
+=======
+                    <p>".$plantList[$i]['subtitulo_planta']."</p>
+>>>>>>> working
                 </div>
                     
                     ");

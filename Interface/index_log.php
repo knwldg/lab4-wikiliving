@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <?php session_start();?>
 =======
@@ -12,6 +13,15 @@ global $plantList;
 
 ?>
 >>>>>>> Stashed changes
+=======
+<?php session_start();
+
+require_once "components/generalControl.php";
+
+listPlants();
+
+?>
+>>>>>>> working
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +56,9 @@ global $plantList;
       <div style="margin-top: 8rem;"></div>
     <div class="row ">
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-4 well-index">
-            <h1 class="text-center">Bem vindo</h1>
-        </div>
+        
+            <?php include "components/carousel.php";?>
+
 
     </div>
 
@@ -63,14 +73,20 @@ global $plantList;
 <<<<<<< Updated upstream
           <div style="margin-left:50px;" class="col-lg-3 col-md-3 col-sm-3 well text-black">é para por sinopses de artigos</div>
 
-          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black">oiiiiii</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black"><?=$plantList[1]['nome_planta']?></div>
 
+<<<<<<< HEAD
           <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black"></div>
 =======
           <div class="col-sm-3 col-sm-offset-1 well subs"><?=$plantList[$i]['subtitulo_planta']?></div>
 
           <?php } ?>
 >>>>>>> Stashed changes
+=======
+          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black">
+        <?=$plantList[1]['subtitulo_planta']?>
+          </div>
+>>>>>>> working
 
       </div>
 
