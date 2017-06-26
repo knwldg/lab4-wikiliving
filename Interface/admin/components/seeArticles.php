@@ -17,7 +17,7 @@
                 echo("
                           
                           <div class=\"visible-lg-inline-block col-lg-4 col-md-4 col-sm-4 text-center\">
-                            <img src=\"../../img/".$plantList[$i]['id_plantas'].".png"."\"<br>
+                            <img src=\"../img/".$plantList[$i]['id_plantas'].".png"."\"<br>
                             <label class=\"\">".$plantList[$i]['nome_planta']."</label>
                         </div>
                           
@@ -27,9 +27,9 @@
 
             ?>
 
-
         </div>
 
 
         </div>
+
 </div>

@@ -8,11 +8,14 @@ require_once './components/generalControl.php';
 
 if (!isset($_GET['id'])) {
 
-	header('Location: ../escolher_artigo.php');
+    header('Location: ./escolher_artigo.php');
 
 }
 
 contentFetcher($_GET['id']);
+listPlants();
+
+global $plantList;
 
 ?>
 <html lang="en">
@@ -37,7 +40,7 @@ contentFetcher($_GET['id']);
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
-<body">
+<body>
 
 <?php include "components/navbar.php"?>
 
@@ -52,7 +55,7 @@ contentFetcher($_GET['id']);
             <!-- Informações base do fruto -->
 
             <div class="well">
-                <h3 class="h3 text-center text-black">Rodrigo implementar o nome do artigo de acordo com a imagem e corpo</h3>
+                <h3 class="h3 text-center text-black"><?=$plantData['nomePlanta']?></h3>
                 <img class="col-centered img-responsive" src="img/<?=$_GET['id']?>.png" alt="">
 
 
@@ -66,7 +69,7 @@ contentFetcher($_GET['id']);
                     <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
                                 <span class="glyphicon glyphicon-search"></span>
-                        </button>
+                            </button>
                         </span>
                 </div>
                 <!-- /.input-group -->
@@ -78,25 +81,22 @@ contentFetcher($_GET['id']);
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#">Tomate</a>
+                            <?php
+
+                            for ($i = 0; $i < 3; $i++) {
+
+                                echo ("
+                                
+                                <li><a href=\"#\">".$plantList[$i]['nome_planta']."</a>
                             </li>
-                            <li><a href="#">Maçã</a>
-                            </li>
-                            <li><a href="#">Batatas</a>
-                            </li>
+                                
+                                ");
+
+                            }
+
+                            ?>
+                            <br>
                             <li><a href="#">Ver lista completa</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Rodrigo por a listar alguns artigos</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
                             </li>
                         </ul>
                     </div>
@@ -129,20 +129,15 @@ contentFetcher($_GET['id']);
 
 
 
-            <hr>
 
             <!-- Post Content -->
 
-
-            <p class="lead"><?=$plantData['textoPlanta']?></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
+            <div class="text-black" style="color: black!important;">
+                <p style="color: #000000 !important;" class="lead"><?=$plantData['textoPlanta']?></p>
+            </div>
             <hr>
 
-<!--                                            Cena para postar comentários                                    -->
+            <!--                                            Cena para postar comentários                                    -->
             <!-- Comments Form -->
             <div class="well text-black">
                 <h4>Leave a Comment:</h4>

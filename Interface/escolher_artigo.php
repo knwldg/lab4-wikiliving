@@ -39,7 +39,7 @@ global $plantList;
 <?php include "components/navbar.php";?>
 
 <!-- Page Content -->
-<br><br><br>
+<div class="sm-spacer60"></div>
 
 <div class="container-fluid">
     <div style="margin-top: 6rem;"></div>
@@ -60,16 +60,17 @@ global $plantList;
 
                 <?php
 
+
                 for ($i = 0; $i < count($plantList); $i++) {
 
                     echo("
                     
                 <div class=\"col-md-4 portfolio-item\">
                     <a href=\"#\">
-                        <img class=\"img-responsive\" src=\"./img/".$plantList[$i]['id_planta'].".png\" alt=\"\">
+                        <img class=\"img-responsive\" src=\"../Interface/img/".$plantList[$i]['id_plantas'].".png\" alt=\"\">
                     </a>
                     <h3>
-                        <a href=\"artigo.php?id=".$plantList[$i]['id_planta']."\">".$plantList[$i]['nome_planta']."</a>
+                        <a href=\"artigo.php?id=".$plantList[$i]['id_plantas']."\">".$plantList[$i]['nome_planta']."</a>
                     </h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
                 </div>

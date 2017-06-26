@@ -35,7 +35,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4 well-index">
-            <h2 class="form-signin-heading text-center" style="font-weight: BOLD; color: #fff;text-transform: uppercase">Login</h2>
+            <h2 class="form-signin-heading text-center specialone" >Login</h2>
         </div>
         <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 well2">
 

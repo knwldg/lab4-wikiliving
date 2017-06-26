@@ -279,7 +279,7 @@ function privilegeChecker($level, $user) {
 
 }
 
-function addArticle($plantName, $plantText, $plantType) {
+function addArticle($plantName, $plantText, $articleSubtitle) {
 
 	global $sql_connection;
 
@@ -297,9 +297,9 @@ function addArticle($plantName, $plantText, $plantType) {
 
 		}
 
-		$sql_op = $sql_connection->prepare("INSERT INTO plantas (nome_planta, texto_planta, tipos_planta_id_tipos_planta) VALUES (?,?,?)");
+		$sql_op = $sql_connection->prepare("INSERT INTO plantas (nome_planta, texto_planta, subtitulo_planta) VALUES (?,?,?)");
 
-		$sql_op->bind_param('ssi', $plantName, $plantText, $plantType);
+		$sql_op->bind_param('sss', $plantName, $plantText, $articleSubtitle);
 
 		if (!$sql_op->execute()) {
 
@@ -313,7 +313,7 @@ function addArticle($plantName, $plantText, $plantType) {
 
 	catch (Exception $exception) {
 
-		echo ("Error: $exception");
+		die ("Error: $exception");
 
 		return false;
 

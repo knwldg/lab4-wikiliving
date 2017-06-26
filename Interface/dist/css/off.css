@@ -1,6 +1,6 @@
 *{
     font-family: 'Roboto', sans-serif;
-    color: #fff;
+    /*color: black!important;*/
 }
 
 /* styling here */
@@ -189,4 +189,11 @@ body{
 
 p{
     color: black;
+}
+
+
+.specialone{
+    font-weight: BOLD;
+    color: #fff;
+    text-transform: uppercase;
 }

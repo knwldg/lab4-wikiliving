@@ -115,15 +115,9 @@ listPlants();
             </div>
         </div>
 
-
-
         </div>
 
-
     </div>
-
-
-
 
 
 <!-- jQuery -->
@@ -144,9 +138,4 @@ listPlants();
 <script src="../admin/dist/js/sb-admin-2.js"></script>
 
 </body>
-
-<script>
-    initSample();
-</script>
-
 </html>
