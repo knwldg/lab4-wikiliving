@@ -87,7 +87,7 @@ global $plantList;
 
                                 echo ("
                                 
-                                <li><a href=\"#\">".$plantList[$i]['nome_planta']."</a>
+                                <li><a href=\"".$plantList[$i]['id_plantas']."\">".$plantList[$i]['nome_planta']."</a>
                             </li>
                                 
                                 ");
@@ -115,6 +115,7 @@ global $plantList;
             <!-- Title -->
             <h1 class="text-black"><?=$plantData['nomePlanta']?></h1>
 
+<<<<<<< Updated upstream
             <!-- Author
             <p class="lead">
                 by <a href="#">Nome do utilizador que escrever (editor ou admin)</a>
@@ -124,6 +125,24 @@ global $plantList;
 
             <!-- Date/Time -->
             <p><span class="glyphicon glyphicon-time text-black"></span> Associar à BD a data do artigo</p>
+=======
+	        <?php
+
+            if(isset($_SESSION['role'])) {
+
+	        if ($_SESSION['role'] == 2 || $_SESSION['role'] == 3) {
+
+		        ?><button onclick="
+		            document.getElementById('textoPlanta').setAttribute('contenteditable', 'true');
+		            CKEDITOR.inline('textoPlanta');
+		        "></button>
+
+	        <?php } }?>
+
+
+            }
+
+>>>>>>> Stashed changes
 
             <hr>
 
