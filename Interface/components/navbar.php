@@ -18,17 +18,17 @@
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
-                <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3){?>
+                <?php if (isset($_SESSION['role'])){?>
                 <li>
                     <a class="page-scroll" style="text-transform: none;!important;" href="index_log.php">Index</a>
-                </li>
-                <?php }}?>
-                <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3){?>
+                </li> 
+                <?php }?>
+                <?php if (isset($_SESSION['role'])){?>
                 <li>
                     <a class="page-scroll" style="text-transform: none;!important;" href="escolher_artigo.php">Escolher Artigo</a>
                 </li>
-                <?php }}?>
-                <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3){?>
+                <?php }?>
+                <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3 || $_SESSION['role'] == 2){?>
                     <li>
                         <a class="page-scroll"  href="admin/index.php">Admin</a>
                     </li>

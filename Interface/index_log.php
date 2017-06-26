@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php session_start();
+
+require_once "components/generalControl.php";
+
+listPlants();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,9 +39,9 @@
       <div style="margin-top: 8rem;"></div>
     <div class="row ">
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-sm-offset-4 well-index">
-            <h1 class="text-center">Bem vindo</h1>
-        </div>
+        
+            <?php include "components/carousel.php";?>
+
 
     </div>
 
@@ -47,9 +53,11 @@
 
           <div style="margin-left:50px;" class="col-lg-3 col-md-3 col-sm-3 well text-black">é para por sinopses de artigos</div>
 
-          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black">oiiiiii</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black"><?=$plantList[1]['nome_planta']?></div>
 
-          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black"></div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-sm-offset-1 well text-black">
+        <?=$plantList[1]['subtitulo_planta']?>
+          </div>
 
       </div>
 

@@ -109,7 +109,12 @@ listPlants();
         <div class="row" id="editor_texto">
             <div class="col-lg-12">
                 <?php
-                include "components/listUsers.php";
+                
+                if(privilegeChecker(3, $_SESSION['username'])) {
+                    include "components/listUsers.php";
+                    
+                }
+
 
                 ?>
             </div>

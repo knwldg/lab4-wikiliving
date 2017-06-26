@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php
+
+session_start();
+
+if (isset($_SESSION['role'])){
+  header('Location: ./index_log.php');}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

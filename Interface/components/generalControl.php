@@ -237,45 +237,29 @@ function privilegeChecker($level, $user) {
 
 	global $sql_connection;
 
-	try {
+	$sql_op = $sql_connection->prepare("SELECT roles_id_roles FROM users WHERE nome_user = ?");
 
-		$sql_op = $sql_connection->prepare("SELECT roles_id_roles FROM users WHERE nome_user = ?");
+	$sql_op->bind_param('s', $user);
 
-		$sql_op->bind_param('s', $user);
+	$sql_op->store_result();
 
-		if (!$sql_op->execute())  {
+	$sql_op->bind_result($role);
 
-			throw new Exception('SQL query error');
+	$sql_op->fetch();
 
-		}
+	if ($level == $role) {
 
-		$sql_op->store_result();
-
-		$sql_op->bind_result($role);
-
-		$sql_op->fetch();
-
-		if ($level === $role) {
-
-			return true;
-
-		}
-
-		else {
-
-			throw new Exception('Permission not granted');
-
-		}
+		return true;
 
 	}
 
-	catch (Exception $exception) {
-
-		echo("Error: $exception");
+	else {
 
 		return false;
 
 	}
+
+
 
 }
 
@@ -300,6 +284,8 @@ function addArticle($plantName, $plantText, $articleSubtitle) {
 		$sql_op = $sql_connection->prepare("INSERT INTO plantas (nome_planta, texto_planta, subtitulo_planta) VALUES (?,?,?)");
 
 		$sql_op->bind_param('sss', $plantName, $plantText, $articleSubtitle);
+		
+//		var_dump($sql_connection);
 
 		if (!$sql_op->execute()) {
 
@@ -313,7 +299,7 @@ function addArticle($plantName, $plantText, $articleSubtitle) {
 
 	catch (Exception $exception) {
 
-		die ("Error: $exception");
+		echo ("Error: $exception");
 
 		return false;
 
@@ -347,7 +333,7 @@ function editArticle($articleId, $plantText) {
 
 }
 
-function editUser($userId, $role) {
+function editUser($userId, $level) {
 
 	global $sql_connection;
 
@@ -355,7 +341,7 @@ function editUser($userId, $role) {
 
 		$sql_op = $sql_connection->prepare("UPDATE users SET roles_id_roles = ? WHERE id_users = ?");
 
-		$sql_op->bind_param('si', $role, $userId);
+		$sql_op->bind_param('ii', $userId, $level);
 
 		if (!$sql_op->execute()) {
 
@@ -379,7 +365,7 @@ function listPlants() {
 
 	global $sql_connection;
 
-	$sql_op = $sql_connection->query("SELECT nome_planta, id_plantas FROM plantas ORDER BY nome_planta DESC");
+	$sql_op = $sql_connection->query("SELECT nome_planta, id_plantas, subtitulo_planta FROM plantas ORDER BY nome_planta DESC");
 
 	for ($plantList = array (); $row = $sql_op->fetch_assoc(); $plantList[] = $row);
 

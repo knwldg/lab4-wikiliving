@@ -42,16 +42,16 @@
                     <a href="see.php"><i class="fa fa-table fa-fw"></i> Ver artigos publicados</a>
                 </li>
                 <li>
-                    <a href="publish.php"><i class="fa fa-dashboard fa-fw"></i> Publicar um artigo</a>
+                    <a href="publish.php"><i class="glyphicon glyphicon-pencil"></i> Publicar um artigo</a>
                 </li>
                 <li>
                     <a href="edit.php"><i class="fa fa-edit fa-fw"></i> Editar artigos</a>
                 </li>
-
+                <?php if (isset($_SESSION['role'])){if ($_SESSION['role'] == 3){?>
                 <li>
                     <a href="list.php"><i class="fa fa-user fa-fw"></i> Ver utilizadores</a>
                 </li>
-
+                <?php }}?>
             </ul>
 
 

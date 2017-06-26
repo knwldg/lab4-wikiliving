@@ -7,6 +7,8 @@
 
 <!-- parte para escrever artigo -->
 
+<form action="editUser.php" method="post">
+
 <div class="col-lg-8 col-md-8 col-sd-8" id="user123">
     <table width="100%" class="table table-striped table-bordered table-hover"
            id="dataTables-example">
@@ -33,7 +35,13 @@
                     <!--                    <td>--><?//=($userList[$i]['id_users'])?><!--</td>-->
                     <td><?=($userList[$i]['nome_user'])?></td>
                     <td><?=($userList[$i]['id_users'])?></td>
-                    <td><?php switch($userList[$i]['roles_id_roles']) {
+                    <td><select title="role" id="role" name="role">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+
+                        <?php switch($userList[$i]['roles_id_roles']) {
 
                             case 1:
 
@@ -49,6 +57,14 @@
                                 echo('Admin');
                                 break;
                         }?></td>
+
+                    <td>
+                        <a>
+
+                            <button></button>
+
+                        </a>
+                    </td>
                 </tr>
 
                 <?php
@@ -58,6 +74,8 @@
         }
 
         ?>
+
+</form>
     </table>
 </div>
 
